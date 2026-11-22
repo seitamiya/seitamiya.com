@@ -1,17 +1,17 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import PostDate from '../components/PostDate.astro';
 
 const posts = (await getCollection('posts')).sort((a, b) => +b.data.date - +a.data.date);
-const fmt = (d: Date) => d.toLocaleDateString('en-US', { dateStyle: 'medium', timeZone: 'UTC' });
 ---
 <Base>
   <h1>Posts</h1>
-  <ul>
-    {posts.map((p) => (
+  <ul class="posts">
+    {posts.map((post) => (
       <li>
-        <time>{fmt(p.data.date)}</time>
-        <a href={`/posts/${p.id}/`}>{p.data.title}</a>
+        <PostDate date={post.data.date} />
+        <a href={`/posts/${post.id}/`}>{post.data.title}</a>
       </li>
     ))}
   </ul>

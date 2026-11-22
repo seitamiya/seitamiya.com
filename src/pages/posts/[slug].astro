@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import PostDate from '../../components/PostDate.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
@@ -9,10 +10,9 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
-const date = post.data.date.toLocaleDateString('en-US', { dateStyle: 'medium', timeZone: 'UTC' });
 ---
 <Base title={post.data.title}>
   <h1>{post.data.title}</h1>
-  <time>{date}</time>
+  <PostDate date={post.data.date} />
   <Content />
 </Base>

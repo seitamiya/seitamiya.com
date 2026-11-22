@@ -1,0 +1,6 @@
+---
+const { date } = Astro.props as { date: Date };
+---
+<time datetime={date.toISOString().slice(0, 10)}>
+  {date.toLocaleDateString('en-US', { dateStyle: 'medium', timeZone: 'UTC' })}
+</time>

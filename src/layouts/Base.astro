@@ -2,7 +2,7 @@
 import '@fontsource-variable/newsreader/wght.css';
 import fontUrl from '@fontsource-variable/newsreader/files/newsreader-latin-wght-normal.woff2?url';
 
-const { title } = Astro.props;
+const { title } = Astro.props as { title?: string };
 const pageTitle = title ? `${title} — Seita Miyamoto` : 'Seita Miyamoto';
 ---
 <!doctype html>
@@ -32,9 +32,9 @@ const pageTitle = title ? `${title} — Seita Miyamoto` : 'Seita Miyamoto';
       h2, h3 { font-size: 1em; margin: 2em 0 0.6em; }
       img { max-width: 100%; }
       pre { overflow-x: auto; font-size: 14px; }
-      ul { list-style: none; padding: 0; margin: 0.6em 0 0; }
-      li { display: flex; gap: 1.2em; margin-bottom: 0.3em; }
-      li time { min-width: 7em; flex-shrink: 0; }
+      .posts { list-style: none; padding: 0; margin: 0.6em 0 0; }
+      .posts li { display: flex; gap: 1.2em; margin-bottom: 0.3em; }
+      .posts time { min-width: 7em; flex-shrink: 0; }
       footer { margin-top: 72px; display: flex; gap: 1em; }
     </style>
   </head>
