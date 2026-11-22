@@ -7,7 +7,7 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 <Base>
-  <h2 class="title" style="margin-bottom: 0.6em">Writings</h2>
+  <h2 class="title" style="margin-bottom: 0.6em">Posts</h2>
   <ul class="posts">
     {posts.map((p) => (
       <li>
